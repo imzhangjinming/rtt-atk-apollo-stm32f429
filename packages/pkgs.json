@@ -1,0 +1,7 @@
+[
+ {
+  "name": "MPU6XXX",
+  "path": "/packages/peripherals/sensors/mpu6xxx",
+  "ver": "latest"
+ }
+]

@@ -1,0 +1,17 @@
+# -*- coding: UTF-8 -*-             # 指定文件的编码格式是 UTF-8，文件可以用中文
+Import('RTT_ROOT')
+Import('rtconfig')
+from building import *
+
+cwd          = GetCurrentDir()      # 将当前路径赋值给字符串 cwd
+include_path = [cwd]                # 将当前头文件路径保存到 list 变量 include_path 中
+src          = []                   # 定义一个 list 变量 src
+
+if GetDepend(['RT_USING_NAND2']):   # hello.c 依赖宏 RT_USING_HELLO
+    src += ['nand_port.c']              # 保存 hello.c 字符串到 list 变量 src 中
+
+# 将 src 包含的源文件创建为 hello 组。depend 为空表示该组不依赖 rtconfig.h 的任何宏。
+# CPPPATH = include_path 表示将当前目录添加到系统的头文件路径中
+group = DefineGroup('nand2', src, depend = [''], CPPPATH = include_path)
+
+Return('group')

@@ -1,0 +1,8 @@
+si 1
+speed 15000
+r
+h
+loadfile "d:/ZJM/dist/project/rtthread.hex"
+r
+g
+q
