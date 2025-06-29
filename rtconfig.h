@@ -138,6 +138,7 @@
 #define RT_USING_ULOG
 #define ULOG_OUTPUT_LVL_D
 #define ULOG_OUTPUT_LVL 7
+#define ULOG_USING_ISR_LOG
 #define ULOG_ASSERT_ENABLE
 #define ULOG_LINE_BUF_SIZE 128
 
@@ -275,12 +276,6 @@
 
 /* sensors drivers */
 
-#define PKG_USING_MPU6XXX
-#define PKG_USING_MPU6XXX_LATEST_VERSION
-#define PKG_USING_MPU6XXX_SAMPLE
-#define PKG_USING_MPU6XXX_ACCE
-#define PKG_USING_MPU6XXX_GYRO
-#define PKG_USING_MPU6XXX_MAG
 /* end of sensors drivers */
 
 /* touch drivers */
@@ -367,7 +362,6 @@
 
 #define BSP_USING_USB_TO_USART
 #define BSP_USING_SDRAM
-#define BSP_USING_MPU9250
 /* end of Onboard Peripheral Drivers */
 
 /* On-chip Peripheral Drivers */

@@ -3,7 +3,7 @@ import os
 
 cwd     = GetCurrentDir()
 CPPPATH = [cwd]
-src     = ['main.c', 'test_om_port.c']
+src     = Glob('*.c')
 
 if GetDepend(['RT_USING_DFS']):
     src += ['mnt.c']
