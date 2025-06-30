@@ -1,3 +1,6 @@
 [submodule "applications/OneMessage"]
 	path = applications/OneMessage
 	url = https://github.com/imzhangjinming/OneMessage.git
+[submodule "applications/uLAPack"]
+	path = applications/uLAPack
+	url = https://github.com/imzhangjinming/uLAPack.git
