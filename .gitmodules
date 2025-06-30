@@ -1,0 +1,3 @@
+[submodule "applications/OneMessage"]
+	path = applications/OneMessage
+	url = https://github.com/imzhangjinming/OneMessage.git
