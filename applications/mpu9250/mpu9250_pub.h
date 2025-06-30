@@ -9,6 +9,7 @@ struct mpu9250_msg_tag
 {
     struct mpu6xxx_3axes accel;
     struct mpu6xxx_3axes gyro;
+    struct mpu6xxx_3axes mag;
 };
 
 typedef struct mpu9250_msg_tag mpu9250_msg;

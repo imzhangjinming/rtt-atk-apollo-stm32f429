@@ -12,7 +12,7 @@
 #define MPU9250_PUB_THREAD_PRIORITY 20
 #define MPU9250_PUB_THREAD_TIMESLICE 20
 
-#define MPU9250_MSG_BUF_SIZE 12
+#define MPU9250_MSG_BUF_SIZE 18
 
 #define MPU9250_PUB_FREQ_HZ  250
 
@@ -42,7 +42,7 @@ void mpu9250_pub_freq_timer_cb(void *parameter)
 
 void mpu9250_pub_cnt_cb(void *parameter)
 {
-    LOG_I("%d", pub_cnt);
+    // LOG_I("%d", pub_cnt);
     pub_cnt = 0;
 }
 
@@ -58,7 +58,8 @@ void mpu9250_pub_thread_entry(void *parameter)
         rt_completion_wait(&completion, RT_WAITING_FOREVER);
 
         mpu6xxx_get_accel(&mpu9250_dev, &mpu9250_msg_buf.accel);
-        mpu6xxx_get_gyro(&mpu9250_dev, &mpu9250_msg_buf.gyro);
+        mpu6xxx_get_gyro_calibrated(&mpu9250_dev, &mpu9250_msg_buf.gyro);
+        mpu6xxx_get_mag_calibrated(&mpu9250_dev, &mpu9250_msg_buf.mag);
 
         om_publish(&mpu9250_topic,
                     &mpu9250_msg_buf,

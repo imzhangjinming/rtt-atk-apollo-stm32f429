@@ -35,7 +35,8 @@ static void mpu9250_sub_test_entry(void *parameter)
                                     false);
             if(ret == OM_OK)
             {
-                LOG_I("ax = %4d, ay = %4d, az = %4d, gx = %4d, gy = %4d, gz = %4d", msg.accel.x, msg.accel.y, msg.accel.z, msg.gyro.x, msg.gyro.y, msg.gyro.z);
+                // LOG_I("ax = %4d, ay = %4d, az = %4d, gx = %4d, gy = %4d, gz = %4d", msg.accel.x, msg.accel.y, msg.accel.z, msg.gyro.x, msg.gyro.y, msg.gyro.z);
+                rt_kprintf("%4d,%4d,%4d,%4d,%4d,%4d,%4d,%4d,%4d\n", msg.accel.x, msg.accel.y, msg.accel.z, msg.gyro.x, msg.gyro.y, msg.gyro.z, msg.mag.x, msg.mag.y, msg.mag.z);
             }
             else
             {

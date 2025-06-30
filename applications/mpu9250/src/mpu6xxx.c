@@ -568,6 +568,22 @@ rt_err_t mpu6xxx_get_gyro(struct mpu6xxx_device *dev, struct mpu6xxx_3axes *gyro
     return RT_EOK;
 }
 
+rt_err_t mpu6xxx_get_gyro_calibrated(struct mpu6xxx_device *dev, struct mpu6xxx_3axes *gyro)
+{
+    rt_err_t res;
+    res = mpu6xxx_get_gyro(dev, gyro);
+    if(res != RT_EOK)
+    {
+        return res;
+    }
+
+    gyro->x -= MPU9250_GYRO_OFFSET_X;
+    gyro->y -= MPU9250_GYRO_OFFSET_Y;
+    gyro->z -= MPU9250_GYRO_OFFSET_Z;
+
+    return RT_EOK;
+}
+
 #ifdef PKG_USING_MPU6XXX_MAG
 
 /**
@@ -592,6 +608,22 @@ rt_err_t mpu6xxx_get_mag(struct mpu6xxx_device *dev, struct mpu6xxx_3axes *mag)
     mag->x = ((rt_int32_t)tmp.x * AK8963_RANGE) / AK8963_FULLSCALE;
     mag->y = ((rt_int32_t)tmp.y * AK8963_RANGE) / AK8963_FULLSCALE;
     mag->z = ((rt_int32_t)tmp.z * AK8963_RANGE) / AK8963_FULLSCALE;
+
+    return RT_EOK;
+}
+
+rt_err_t mpu6xxx_get_mag_calibrated(struct mpu6xxx_device *dev, struct mpu6xxx_3axes *mag)
+{
+    rt_err_t res;
+    res = mpu6xxx_get_mag(dev, mag);
+    if(res != RT_EOK)
+    {
+        return res;
+    }
+
+    mag->x = 100 / MPU9250_MAG_SCALE_X * (mag->x - MPU9250_MAG_OFFSET_X);
+    mag->y = 100 / MPU9250_MAG_SCALE_Y * (mag->y - MPU9250_MAG_OFFSET_Y);
+    mag->z = 100 / MPU9250_MAG_SCALE_Z * (mag->z - MPU9250_MAG_OFFSET_Z);
 
     return RT_EOK;
 }

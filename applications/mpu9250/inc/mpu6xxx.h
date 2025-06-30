@@ -22,6 +22,17 @@
 #define PKG_USING_MPU6XXX_GYRO
 #define PKG_USING_MPU6XXX_MAG
 
+#define MPU9250_GYRO_OFFSET_X   (-7)
+#define MPU9250_GYRO_OFFSET_Y   (-38)
+#define MPU9250_GYRO_OFFSET_Z   (13)
+
+#define MPU9250_MAG_OFFSET_X    (26)
+#define MPU9250_MAG_OFFSET_Y    (25)
+#define MPU9250_MAG_OFFSET_Z    (-16)
+#define MPU9250_MAG_SCALE_X     (31)
+#define MPU9250_MAG_SCALE_Y     (35)
+#define MPU9250_MAG_SCALE_Z     (40)
+
 /* Accelerometer full scale range */
 enum mpu6xxx_accel_range
 {
@@ -143,6 +154,8 @@ rt_err_t mpu6xxx_get_accel(struct mpu6xxx_device *dev, struct mpu6xxx_3axes *acc
  */
 rt_err_t mpu6xxx_get_gyro(struct mpu6xxx_device *dev, struct mpu6xxx_3axes *gyro);
 
+rt_err_t mpu6xxx_get_gyro_calibrated(struct mpu6xxx_device *dev, struct mpu6xxx_3axes *gyro);
+
 #ifdef PKG_USING_MPU6XXX_MAG
 
 /**
@@ -155,6 +168,7 @@ rt_err_t mpu6xxx_get_gyro(struct mpu6xxx_device *dev, struct mpu6xxx_3axes *gyro
  */
 rt_err_t mpu6xxx_get_mag(struct mpu6xxx_device *dev, struct mpu6xxx_3axes *mag);
 
+rt_err_t mpu6xxx_get_mag_calibrated(struct mpu6xxx_device *dev, struct mpu6xxx_3axes *mag);
 #endif
 
 /**
