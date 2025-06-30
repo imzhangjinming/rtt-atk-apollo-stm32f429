@@ -21,6 +21,7 @@
 
 extern rt_err_t mpu9250_pub_init(void);
 extern void mpu9250_sub_test(void);
+extern void ulapack_test(void);
 
 int main(void)
 {
@@ -43,6 +44,8 @@ int main(void)
     mpu6xxx_init("i2c1", RT_NULL);
 
     mpu9250_sub_test();
+
+    ulapack_test();
 
     /* set LED0 pin mode to output */
     rt_pin_mode(LED0_PIN, PIN_MODE_OUTPUT);
