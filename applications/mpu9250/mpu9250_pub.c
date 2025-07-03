@@ -58,8 +58,8 @@ void mpu9250_pub_thread_entry(void *parameter)
         rt_completion_wait(&completion, RT_WAITING_FOREVER);
 
         mpu6xxx_get_accel(&mpu9250_dev, &mpu9250_msg_buf.accel);
-        mpu6xxx_get_gyro_calibrated(&mpu9250_dev, &mpu9250_msg_buf.gyro);
-        mpu6xxx_get_mag_calibrated(&mpu9250_dev, &mpu9250_msg_buf.mag);
+        mpu6xxx_get_gyro(&mpu9250_dev, &mpu9250_msg_buf.gyro);
+        mpu6xxx_get_mag(&mpu9250_dev, &mpu9250_msg_buf.mag);
 
         om_publish(&mpu9250_topic,
                     &mpu9250_msg_buf,

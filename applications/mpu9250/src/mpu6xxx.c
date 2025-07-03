@@ -539,8 +539,7 @@ rt_err_t mpu6xxx_get_accel(struct mpu6xxx_device *dev, struct mpu6xxx_3axes *acc
 }
 
 /**
- * This function gets the data of the gyroscope, unit: deg/10s
- * Here deg/10s means 10 times higher precision than deg/s.
+ * This function gets the data of the gyroscope, unit: deg/s
  *
  * @param dev the pointer of device driver structure
  * @param gyro the pointer of 3axes structure for receive data
@@ -561,9 +560,9 @@ rt_err_t mpu6xxx_get_gyro(struct mpu6xxx_device *dev, struct mpu6xxx_3axes *gyro
 
     sen = MPU6XXX_GYRO_SEN >> dev->config.gyro_range;
 
-    gyro->x = (rt_int32_t)tmp.x * 100 / sen;
-    gyro->y = (rt_int32_t)tmp.y * 100 / sen;
-    gyro->z = (rt_int32_t)tmp.z * 100 / sen;
+    gyro->x = (rt_int32_t)tmp.x * 10 / sen;
+    gyro->y = (rt_int32_t)tmp.y * 10 / sen;
+    gyro->z = (rt_int32_t)tmp.z * 10 / sen;
 
     return RT_EOK;
 }
@@ -832,11 +831,11 @@ struct mpu6xxx_device *mpu6xxx_init(const char *dev_name, rt_uint8_t param)
         else
         {
             /* find mpu6xxx device at address: 0x69 */
-            dev->i2c_addr = MPU6XXX_ADDRESS_AD0_HIGH;
+            dev->i2c_addr = MPU6XXX_ADDRESS_AD0_LOW;
             if (mpu6xxx_read_regs(dev, MPU6XXX_RA_WHO_AM_I, 1, &reg) != RT_EOK)
             {
                 /* find mpu6xxx device at address 0x68 */
-                dev->i2c_addr = MPU6XXX_ADDRESS_AD0_LOW;
+                dev->i2c_addr = MPU6XXX_ADDRESS_AD0_HIGH;
                 if (mpu6xxx_read_regs(dev, MPU6XXX_RA_WHO_AM_I, 1, &reg) != RT_EOK)
                 {
                     LOG_E("Can't find device at '%s'!", dev_name);

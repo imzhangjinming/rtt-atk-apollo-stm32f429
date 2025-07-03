@@ -13,7 +13,6 @@
 #include <board.h>
 #include <ulog.h>
 
-#include "hello.h"
 #include "om.h"
 #include "mpu6xxx.h"
 
@@ -21,7 +20,9 @@
 
 extern rt_err_t mpu9250_pub_init(void);
 extern void mpu9250_sub_test(void);
-extern void ulapack_test(void);
+// extern void ulapack_test(void);
+extern rt_err_t ekf_mpu9250_init(void);
+
 
 int main(void)
 {
@@ -43,9 +44,11 @@ int main(void)
 
     mpu6xxx_init("i2c1", RT_NULL);
 
-    mpu9250_sub_test();
+    // mpu9250_sub_test();
 
-    ulapack_test();
+    // ulapack_test();
+
+    ekf_mpu9250_init();
 
     /* set LED0 pin mode to output */
     rt_pin_mode(LED0_PIN, PIN_MODE_OUTPUT);

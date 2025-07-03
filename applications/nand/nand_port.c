@@ -625,6 +625,6 @@ int rt_hw_nand_init(void)
     return RT_EOK;
 }
 
-INIT_DEVICE_EXPORT(rt_hw_nand_init);
+// INIT_DEVICE_EXPORT(rt_hw_nand_init);
 
 #endif

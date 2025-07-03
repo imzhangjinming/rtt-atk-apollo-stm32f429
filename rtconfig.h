@@ -70,14 +70,11 @@
 #define FINSH_THREAD_NAME "tshell"
 #define FINSH_THREAD_PRIORITY 20
 #define FINSH_THREAD_STACK_SIZE 4096
-#define FINSH_USING_HISTORY
-#define FINSH_HISTORY_LINES 5
 #define FINSH_USING_SYMTAB
 #define FINSH_CMD_SIZE 80
 #define MSH_USING_BUILT_IN_COMMANDS
 #define FINSH_USING_DESCRIPTION
 #define FINSH_ARG_MAX 10
-#define FINSH_USING_OPTION_COMPLETION
 
 /* DFS: device virtual file system */
 
@@ -94,8 +91,6 @@
 #define RT_USING_I2C
 #define RT_USING_I2C_BITOPS
 #define RT_USING_PIN
-#define RT_USING_MTD_NAND
-#define RT_MTD_NAND_DEBUG
 #define RT_USING_RTC
 #define RT_USING_SPI
 
@@ -146,7 +141,6 @@
 
 #define ULOG_USING_COLOR
 #define ULOG_OUTPUT_TIME
-#define ULOG_TIME_USING_TIMESTAMP
 #define ULOG_OUTPUT_LEVEL
 #define ULOG_OUTPUT_TAG
 #define ULOG_OUTPUT_THREAD_NAME
@@ -272,6 +266,10 @@
 /* NUVOTON Drivers */
 
 /* end of NUVOTON Drivers */
+
+/* GD32 Drivers */
+
+/* end of GD32 Drivers */
 /* end of HAL & SDK Drivers */
 
 /* sensors drivers */
@@ -361,7 +359,6 @@
 /* Onboard Peripheral Drivers */
 
 #define BSP_USING_USB_TO_USART
-#define BSP_USING_SDRAM
 /* end of Onboard Peripheral Drivers */
 
 /* On-chip Peripheral Drivers */
@@ -369,9 +366,6 @@
 #define BSP_USING_GPIO
 #define BSP_USING_UART
 #define BSP_USING_UART1
-#define BSP_USING_ON_CHIP_FLASH
-#define BSP_USING_SPI
-#define BSP_USING_SPI2
 #define BSP_USING_I2C1
 
 /* Notice: PH4 --> 116; PH5 --> 117 */
@@ -380,18 +374,10 @@
 #define BSP_I2C1_SDA_PIN 117
 #define BSP_USING_ONCHIP_RTC
 #define BSP_RTC_USING_LSE
-#define BSP_USING_FMC
 /* end of On-chip Peripheral Drivers */
 
 /* Board extended module Drivers */
 
 /* end of Hardware Drivers Config */
-
-/* hello module */
-
-#define RT_USING_HELLO
-#define RT_HELLO_NAME "hello rt"
-#define RT_HELLO_VALUE 999
-/* end of hello module */
 
 #endif
